@@ -24,4 +24,4 @@ The main contenders for android development now seem to be Dart and Kotlin. Dart
 
 Time to learn Kotlin!
 
-Checkpoint: https://kotlinlang.org/docs/kotlin-tour-basic-types.html
+Checkpoint: https://kotlinlang.org/docs/kotlin-tour-intermediate-extension-functions.html
