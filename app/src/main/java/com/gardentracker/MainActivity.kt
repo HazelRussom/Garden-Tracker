@@ -79,8 +79,9 @@ enum class AppDestinations(
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    val output = "Hello World, this is Hazel's $name!"
     Text(
-        text = "Hello $name!",
+        text = output,
         modifier = modifier
     )
 }
