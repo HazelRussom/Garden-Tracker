@@ -24,6 +24,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import com.gardentracker.ui.theme.GardenTrackerTheme
+import java.time.LocalDate
+import java.time.Month
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,12 +62,37 @@ fun GardenTrackerApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            MonthlyTaskDisplay()
             Greeting(
                 name = "Android",
                 modifier = Modifier.padding(innerPadding)
             )
         }
     }
+}
+
+@Composable
+fun MonthlyTaskDisplay() {
+    val tasksMap = mapOf(
+        Month.JANUARY to listOf(""),
+        Month.FEBRUARY to listOf(""),
+        Month.MARCH to listOf(""),
+        Month.APRIL to listOf(""),
+        Month.MAY to listOf(""),
+        Month.JUNE to listOf(""),
+        Month.JULY to listOf(""),
+        Month.AUGUST to listOf(""),
+        Month.SEPTEMBER to listOf(""),
+        Month.OCTOBER to listOf(""),
+        Month.NOVEMBER to listOf(""),
+        Month.DECEMBER to listOf("December!"),
+    )
+
+    val currentMonth = LocalDate.now().month
+
+    println(currentMonth)
+    println(tasksMap[currentMonth]);
+
 }
 
 enum class AppDestinations(
@@ -79,8 +106,6 @@ enum class AppDestinations(
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    println("Hello Hazel!")
-    println("A" + 1)
     val output = "Hello World, this is Hazel's $name!"
     Text(
         text = output,
