@@ -77,7 +77,7 @@ fun GardenTrackerApp() {
 @Composable
 fun MonthlyTaskDisplay() {
     val tasksMap = mapOf(
-        Month.JANUARY to listOf(""),
+        Month.JANUARY to listOf("Test Record", "Second test record"),
         Month.FEBRUARY to listOf(""),
         Month.MARCH to listOf(""),
         Month.APRIL to listOf(""),
@@ -96,16 +96,18 @@ fun MonthlyTaskDisplay() {
     println(currentMonth)
     val tasks = tasksMap[currentMonth]
 
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            "Example checkbox"
-        )
-        Checkbox(
-            checked = false,
-            onCheckedChange = { println("Not Implemented!") }
-        )
+    tasks?.forEach {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                it
+            )
+            Checkbox(
+                checked = false,
+                onCheckedChange = { println("Not Implemented!") }
+            )
+        }
     }
 }
 
