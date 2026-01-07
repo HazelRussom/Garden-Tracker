@@ -66,11 +66,8 @@ fun GardenTrackerApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Column {
-                Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
-            )
+            Column(modifier = Modifier.padding(innerPadding)) {
+                Title()
                 MonthlyTaskDisplay()
 
             }
@@ -81,7 +78,12 @@ fun GardenTrackerApp() {
 @Composable
 fun MonthlyTaskDisplay() {
     val tasksMap = mapOf(
-        Month.JANUARY to listOf("Test Record", "Second test record"),
+        Month.JANUARY to listOf(
+            "Plant Delphiniums indoors",
+            "Plant Sweetpeas indoors",
+            "Plant Verbena indoors",
+            "Plant Yellow Onion seeds indoors"
+        ),
         Month.FEBRUARY to listOf(""),
         Month.MARCH to listOf(""),
         Month.APRIL to listOf(""),
@@ -126,11 +128,9 @@ enum class AppDestinations(
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val output = "Hello World, this is Hazel's $name!"
+fun Title() {
     Text(
-        text = output,
-        modifier = modifier
+        text = "Garden Tracker",
     )
 }
 
@@ -138,6 +138,5 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     GardenTrackerTheme {
-        Greeting("Android")
     }
 }
