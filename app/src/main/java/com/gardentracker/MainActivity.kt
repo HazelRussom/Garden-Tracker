@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -65,11 +66,14 @@ fun GardenTrackerApp() {
         }
     ) {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            MonthlyTaskDisplay()
-            Greeting(
+            Column {
+                Greeting(
                 name = "Android",
                 modifier = Modifier.padding(innerPadding)
             )
+                MonthlyTaskDisplay()
+
+            }
         }
     }
 }
@@ -95,18 +99,19 @@ fun MonthlyTaskDisplay() {
 
     println(currentMonth)
     val tasks = tasksMap[currentMonth]
-
-    tasks?.forEach {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                it
-            )
-            Checkbox(
-                checked = false,
-                onCheckedChange = { println("Not Implemented!") }
-            )
+    Column {
+        tasks?.forEach {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    it
+                )
+                Checkbox(
+                    checked = false,
+                    onCheckedChange = { println("Not Implemented!") }
+                )
+            }
         }
     }
 }
