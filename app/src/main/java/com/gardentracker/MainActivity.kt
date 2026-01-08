@@ -81,10 +81,12 @@ fun MonthlyTaskDisplay() {
     val tasksMap = mapOf(
         Month.JANUARY to MonthTasks(
             tasks = listOf(
-                "Plant Delphiniums indoors",
-                "Plant Sweetpeas indoors",
-                "Plant Verbena indoors",
-                "Plant Yellow Onion seeds indoors"
+            ),
+            indoorPlanting = listOf(
+                "Delphinium",
+                "Sweetpea",
+                "Verbena",
+                "Yellow Onion seeds"
             )
         ),
         Month.FEBRUARY to MonthTasks(
@@ -127,12 +129,25 @@ fun MonthlyTaskDisplay() {
     println(currentMonth)
     val tasks = tasksMap[currentMonth]
     Column {
-        tasks?.forEach {
+        tasks!!.tasks.forEach {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     it
+                )
+                Checkbox(
+                    checked = false,
+                    onCheckedChange = { println("Not Implemented!") }
+                )
+            }
+        }
+        tasks.indoorPlanting.forEach {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    "Plant $it indoors"
                 )
                 Checkbox(
                     checked = false,
