@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import com.gardentracker.domain.MonthTasks
 import com.gardentracker.ui.theme.GardenTrackerTheme
 import java.time.LocalDate
 import java.time.Month
@@ -78,23 +79,47 @@ fun GardenTrackerApp() {
 @Composable
 fun MonthlyTaskDisplay() {
     val tasksMap = mapOf(
-        Month.JANUARY to listOf(
-            "Plant Delphiniums indoors",
-            "Plant Sweetpeas indoors",
-            "Plant Verbena indoors",
-            "Plant Yellow Onion seeds indoors"
+        Month.JANUARY to MonthTasks(
+            tasks = listOf(
+                "Plant Delphiniums indoors",
+                "Plant Sweetpeas indoors",
+                "Plant Verbena indoors",
+                "Plant Yellow Onion seeds indoors"
+            )
         ),
-        Month.FEBRUARY to listOf(""),
-        Month.MARCH to listOf(""),
-        Month.APRIL to listOf(""),
-        Month.MAY to listOf(""),
-        Month.JUNE to listOf(""),
-        Month.JULY to listOf(""),
-        Month.AUGUST to listOf(""),
-        Month.SEPTEMBER to listOf(""),
-        Month.OCTOBER to listOf(""),
-        Month.NOVEMBER to listOf(""),
-        Month.DECEMBER to listOf("December!"),
+        Month.FEBRUARY to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.MARCH to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.APRIL to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.MAY to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.JUNE to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.JULY to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.AUGUST to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.SEPTEMBER to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.OCTOBER to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.NOVEMBER to MonthTasks(
+            tasks = listOf(""),
+        ),
+        Month.DECEMBER to MonthTasks(
+            tasks = listOf("December!"),
+        )
     )
 
     val currentMonth = LocalDate.now().month
