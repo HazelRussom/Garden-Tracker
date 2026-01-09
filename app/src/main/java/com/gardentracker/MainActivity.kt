@@ -27,10 +27,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import com.gardentracker.data.repository.MonthlyTasksRepository
 import com.gardentracker.domain.MonthTasks
 import com.gardentracker.ui.theme.GardenTrackerTheme
 import java.time.LocalDate
-import java.time.Month
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +48,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GardenTrackerApp() {
     var currentDestination by rememberSaveable { mutableStateOf(AppDestinations.HOME) }
+
+    val repository = MonthlyTasksRepository()
+    val currentMonth = LocalDate.now().month
+    val tasks = repository.getTasksFor(currentMonth)
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
@@ -69,7 +73,7 @@ fun GardenTrackerApp() {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             Column(modifier = Modifier.padding(innerPadding)) {
                 Title()
-                MonthlyTaskDisplay()
+                MonthlyTaskDisplay(tasks)
 
             }
         }
@@ -77,59 +81,9 @@ fun GardenTrackerApp() {
 }
 
 @Composable
-fun MonthlyTaskDisplay() {
-    val tasksMap = mapOf(
-        Month.JANUARY to MonthTasks(
-            tasks = listOf(
-            ),
-            indoorPlanting = listOf(
-                "Delphinium",
-                "Sweetpea",
-                "Verbena",
-                "Yellow Onion seeds"
-            )
-        ),
-        Month.FEBRUARY to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.MARCH to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.APRIL to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.MAY to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.JUNE to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.JULY to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.AUGUST to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.SEPTEMBER to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.OCTOBER to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.NOVEMBER to MonthTasks(
-            tasks = listOf(""),
-        ),
-        Month.DECEMBER to MonthTasks(
-            tasks = listOf("December!"),
-        )
-    )
-
-    val currentMonth = LocalDate.now().month
-
-    println(currentMonth)
-    val tasks = tasksMap[currentMonth]
+fun MonthlyTaskDisplay(tasks: MonthTasks) {
     Column {
-        tasks!!.tasks.forEach {
+        tasks.tasks.forEach {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
