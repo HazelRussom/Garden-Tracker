@@ -26,4 +26,4 @@ Time to learn Kotlin!
 
 Checkpoint: https://kotlinlang.org/docs/kotlin-tour-intermediate-extension-functions.html
 
-Setting up Android Studio...
+Set up Android Studio.
